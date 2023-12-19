@@ -32,7 +32,7 @@ def generate_launch_description():
 
     static_tf_nodes = []
 
-    f = open(CONFIG_DIR + '/sensors.json')
+    f = open(CONFIG_DIR + '/sensors_homes.json')
     sensors_config = json.load(f)
     sensors_home_actors = sensors_config["actors"]
 
@@ -42,7 +42,7 @@ def generate_launch_description():
         y = str(location["y"])
         z = str(location["z"])
         rotation = sh["rotation"]
-        quat = carla_rotation_to_RPY(**rotation)
+        quat = carla_rotation_to_quat(**rotation)
         qw = str(quat[0])
         qx = str(quat[1])
         qy = str(quat[2])
