@@ -6,7 +6,8 @@ def generate_launch_description():
     ld = launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(
             name='host',
-            default_value='localhost',
+            # default_value='localhost',
+            default_value='192.168.1.1',
             description='IP of the CARLA server'
         ),
         launch.actions.DeclareLaunchArgument(
@@ -16,7 +17,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='timeout',
-            default_value='2',
+            default_value='20',
             description='Time to wait for a successful connection to the CARLA server'
         ),
         launch.actions.DeclareLaunchArgument(

@@ -119,7 +119,7 @@ class CarlaRosBridge(CompatibleNode):
             self.carla_settings.synchronous_mode,
             self.carla_settings.fixed_delta_seconds,
             self)
-
+        
         # for waiting for ego vehicle control commands in synchronous mode,
         # their ids are maintained in a list.
         # Before tick(), the list is filled and the loop waits until the list is empty.
@@ -387,9 +387,10 @@ def main(args=None):
 
     roscomp.on_shutdown(carla_bridge.destroy)
 
-    parameters['host'] = carla_bridge.get_param('host', 'localhost')
+    # parameters['host'] = carla_bridge.get_param('host', 'localhost')
+    parameters['host'] = carla_bridge.get_param('host', '192.168.1.1')
     parameters['port'] = carla_bridge.get_param('port', 2000)
-    parameters['timeout'] = carla_bridge.get_param('timeout', 2)
+    parameters['timeout'] = carla_bridge.get_param('timeout', 20)
     parameters['passive'] = carla_bridge.get_param('passive', False)
     parameters['synchronous_mode'] = carla_bridge.get_param('synchronous_mode', True)
     parameters['synchronous_mode_wait_for_vehicle_control_command'] = carla_bridge.get_param(
@@ -451,6 +452,8 @@ def main(args=None):
         pass
     finally:
         roscomp.shutdown()
+        carla_bridge.carla_settings.synchronous_mode = False
+        carla_world.apply_settings(carla_bridge.carla_settings)
         del carla_world
         del carla_client
 
