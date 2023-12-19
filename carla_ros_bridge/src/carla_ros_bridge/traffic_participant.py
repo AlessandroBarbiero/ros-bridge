@@ -9,7 +9,7 @@
 """
 Classes to handle Carla traffic participants
 """
-
+import carla
 import carla_common.transforms as trans
 
 from carla_ros_bridge.actor import Actor
@@ -137,7 +137,13 @@ class TrafficParticipant(Actor):
         marker.type = Marker.CUBE
 
         marker.pose = self.get_marker_pose()
-        marker.scale.x = self.carla_actor.bounding_box.extent.x * 2.0
-        marker.scale.y = self.carla_actor.bounding_box.extent.y * 2.0
-        marker.scale.z = self.carla_actor.bounding_box.extent.z * 2.0
+        # Add manually a bounding box for bikes
+        bounding_box = self.carla_actor.bounding_box
+        if self.carla_actor.type_id.startswith('vehicle') and int(self.carla_actor.attributes['number_of_wheels']) == 2:
+            bounding_box.location += carla.Vector3D(0.3,0.2,0.9)
+            bounding_box.extent = carla.Vector3D(0.6, 0.4, 0.5)
+        
+        marker.scale.x = bounding_box.extent.x * 2.0
+        marker.scale.y = bounding_box.extent.y * 2.0
+        marker.scale.z = bounding_box.extent.z * 2.0
         return marker
