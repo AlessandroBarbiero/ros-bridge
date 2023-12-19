@@ -1,0 +1,56 @@
+{
+    "actors" : [
+        {
+            "name" : "cross_s",
+            "location" : {
+                "x": 2.450000,
+                "y": -21.35, 
+                "z": 0.100000
+            },
+            "rotation" : {
+                "pitch" : 0.0,
+                "yaw" : 0.0,
+                "roll" : 0.0
+            }
+        },
+        {
+            "name" : "debug_s",
+            "location" : {
+                "x": 0.550000,
+                "y": -6.050000, 
+                "z": 0.10000
+            },
+            "rotation" : {
+                "pitch" : 0.0,
+                "yaw" : 0.0,
+                "roll" : 0.0
+            }
+        },
+        {
+            "name" : "int_road_s",
+            "location" : {
+                "x": -8.95000000,
+                "y": -16.40000000, 
+                "z": 0.100000
+            },
+            "rotation" : {
+                "pitch" : 0.0,
+                "yaw" : 0.0,
+                "roll" : 0.0
+            }
+        },
+        {
+            "name" : "near_station_s",
+            "location" : {
+                "x": 20.45000000,
+                "y": -5.35000000, 
+                "z": 0.100000
+            },
+            "rotation" : {
+                "pitch" : 0.0,
+                "yaw" : 0.0,
+                "roll" : 0.0
+            }
+        }
+    ]
+}
