@@ -96,8 +96,7 @@ def generate_launch_description():
         ),
         launch.actions.DeclareLaunchArgument(
             name='fixed_delta_seconds',
-            # 7 ms is around 143hz
-            default_value='0.017', # To avoid aliasing I set frequency to double the one of the slowest sensor
+            default_value='0.017', # To avoid aliasing I set frequency to double the one of the slowest sensor (~60fps)
             description='Simulation time (delta seconds) between simulation steps'
         ),
         launch.actions.DeclareLaunchArgument(
