@@ -39,7 +39,7 @@ def generate_launch_description():
     for sh in sensors_home_actors:
         location = sh["location"]
         x = str(location["x"])
-        y = str(location["y"])
+        y = str(-location["y"]) # Invert y because we are passing from left to right hand system
         z = str(location["z"])
         rotation = sh["rotation"]
         quat = carla_rotation_to_quat(**rotation)
@@ -97,7 +97,7 @@ def generate_launch_description():
         launch.actions.DeclareLaunchArgument(
             name='fixed_delta_seconds',
             # 7 ms is around 143hz
-            default_value='0.05',
+            default_value='0.017', # To avoid aliasing I set frequency to double the one of the slowest sensor
             description='Simulation time (delta seconds) between simulation steps'
         ),
         launch.actions.DeclareLaunchArgument(
