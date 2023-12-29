@@ -32,8 +32,8 @@ def generate_launch_description():
 
     static_tf_nodes = []
 
-    f = open(CONFIG_DIR + '/sensors_homes.json')
-    sensors_config = json.load(f)
+    with open(CONFIG_DIR + '/sensors_homes.json') as f:
+        sensors_config = json.load(f)
     sensors_home_actors = sensors_config["actors"]
 
     for sh in sensors_home_actors:
